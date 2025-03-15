@@ -1,0 +1,15 @@
+syntax = "proto3"; // Use Protobuf 3 syntax
+package chat;
+option go_package = "./chat"; // Output directory for generated Go code
+
+// Chat service definition
+service Chat {
+  // Bidirectional streaming RPC for chat
+  rpc ChatStream (stream Message) returns (stream Message) {}
+}
+
+// Message structure
+message Message {
+  string user = 1; // Username
+  string text = 2; // Message content
+}
